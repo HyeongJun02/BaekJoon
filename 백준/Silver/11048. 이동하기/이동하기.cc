@@ -25,6 +25,13 @@ int dp[1001][1001];
 //int maxCandy = 0;
 
 void solve() {
+	for (int i = 1; i <= N; i++) {
+		for (int j = 1; j <= M; j++) {
+			dp[i][j] = room[i][j] + max(dp[i - 1][j - 1], max(dp[i - 1][j], dp[i][j - 1]));
+		}
+	}
+
+	cout << dp[N][M] << endl;
 }
 
 void input() {
@@ -35,14 +42,6 @@ void input() {
 			dp[i][j] = room[i][j];
 		}
 	}
-
-	for (int i = 1; i <= N; i++) {
-		for (int j = 1; j <= M; j++) {
-			dp[i][j] = room[i][j] + max(dp[i - 1][j - 1], max(dp[i - 1][j], dp[i][j - 1]));
-		}
-	}
-
-	cout << dp[N][M] << endl;
 }
 
 int main(void) {
